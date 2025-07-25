@@ -38,7 +38,7 @@ Support Windows / Linux out of the box now.
 
 ## 更改记录 & 发布频道 / Changelog & Telegram Channel
 
-https://t.me/Matsuridayo
+
 
 ## 项目主页 & 文档 / Homepage & Documents
 
@@ -84,17 +84,7 @@ https://matsuridayo.github.io
 
 如果这个项目对您有帮助，可以通过捐赠的方式帮助我们维持这个项目。
 
-捐赠满等额 50 USD 可以在「[捐赠榜](https://mtrdnt.pages.dev/donation_list)」显示头像，如果您未被添加到这里，欢迎联系我们补充。
-
-Donations of 50 USD or more can display your avatar on the [Donation List](https://mtrdnt.pages.dev/donation_list). If you are not added here, please contact us to add it.
-
-USDT TRC20
-
-`TRhnA7SXE5Sap5gSG3ijxRmdYFiD4KRhPs`
-
-XMR
-
-`49bwESYQjoRL3xmvTcjZKHEKaiGywjLYVQJMUv79bXonGiyDCs8AzE3KiGW2ytTybBCpWJUvov8SjZZEGg66a4e59GXa6k5`
+捐助方式看原项目
 
 ## Credits
 
