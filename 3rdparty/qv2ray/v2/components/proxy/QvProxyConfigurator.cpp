@@ -18,8 +18,8 @@
 
 #include "3rdparty/fix_old_qt.h"
 #include "3rdparty/qv2ray/wrapper.hpp"
-#include "fmt/Preset.hpp"
-#include "main/NekoGui.hpp"
+#include "core/config/Preset.hpp"
+#include "app/NekoGui.hpp"
 
 #define QV_MODULE_NAME "SystemProxy"
 

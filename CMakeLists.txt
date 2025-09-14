@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.15)
 
 project(nekobox VERSION 0.1 LANGUAGES CXX)
 
@@ -103,6 +103,7 @@ if (NKR_NO_QHOTKEY)
 else ()
     set(QHOTKEY_INSTALL OFF)
     set(BUILD_SHARED_LIBS OFF)
+    set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
     add_subdirectory(3rdparty/QHotkey)
     list(APPEND NKR_EXTERNAL_TARGETS qhotkey)
 endif ()
@@ -122,10 +123,10 @@ endif ()
 set(PROJECT_SOURCES
         ${PLATFORM_SOURCES}
 
-        main/main.cpp
-        main/NekoGui.cpp
-        main/NekoGui_Utils.cpp
-        main/HTTPRequestHelper.cpp
+        src/app/main.cpp
+        src/app/NekoGui.cpp
+        src/app/NekoGui_Utils.cpp
+        src/app/HTTPRequestHelper.cpp
 
         3rdparty/base64.cpp
         3rdparty/qrcodegen.cpp
@@ -141,94 +142,94 @@ set(PROJECT_SOURCES
         3rdparty/qv2ray/v3/components/GeositeReader/GeositeReader.cpp
         3rdparty/qv2ray/v3/components/GeositeReader/picoproto.cpp
 
-        rpc/gRPC.cpp
+        src/services/rpc/gRPC.cpp
 
-        db/Database.cpp
-        db/traffic/TrafficLooper.cpp
-        db/ProfileFilter.cpp
-        db/ConfigBuilder.cpp
+        src/core/database/Database.cpp
+        src/core/database/traffic/TrafficLooper.cpp
+        src/core/database/ProfileFilter.cpp
+        src/core/database/ConfigBuilder.cpp
 
-        fmt/AbstractBean.cpp
-        fmt/Bean2CoreObj_box.cpp
-        fmt/Bean2External.cpp
-        fmt/Bean2Link.cpp
-        fmt/Link2Bean.cpp
-        fmt/ChainBean.hpp # translate
+        src/core/config/AbstractBean.cpp
+        src/core/config/Bean2CoreObj_box.cpp
+        src/core/config/Bean2External.cpp
+        src/core/config/Bean2Link.cpp
+        src/core/config/Link2Bean.cpp
+        src/core/config/ChainBean.hpp # translate
 
-        sub/GroupUpdater.cpp
+        src/services/subscription/GroupUpdater.cpp
 
-        sys/ExternalProcess.cpp
-        sys/AutoRun.cpp
+        src/sys/ExternalProcess.cpp
+        src/sys/AutoRun.cpp
 
-        ui/ThemeManager.cpp
-        ui/Icon.cpp
+        src/ui/ThemeManager.cpp
+        src/ui/Icon.cpp
 
-        ui/mainwindow_grpc.cpp
-        ui/mainwindow.cpp
-        ui/mainwindow.h
-        ui/mainwindow.ui
+        src/ui/mainwindow_grpc.cpp
+        src/ui/mainwindow.cpp
+        src/ui/mainwindow.h
+        src/ui/mainwindow.ui
 
-        ui/edit/dialog_edit_profile.h
-        ui/edit/dialog_edit_profile.cpp
-        ui/edit/dialog_edit_profile.ui
-        ui/edit/dialog_edit_group.h
-        ui/edit/dialog_edit_group.cpp
-        ui/edit/dialog_edit_group.ui
+        src/ui/edit/dialog_edit_profile.h
+        src/ui/edit/dialog_edit_profile.cpp
+        src/ui/edit/dialog_edit_profile.ui
+        src/ui/edit/dialog_edit_group.h
+        src/ui/edit/dialog_edit_group.cpp
+        src/ui/edit/dialog_edit_group.ui
 
-        ui/edit/edit_chain.h
-        ui/edit/edit_chain.cpp
-        ui/edit/edit_chain.ui
-        ui/edit/edit_socks_http.h
-        ui/edit/edit_socks_http.cpp
-        ui/edit/edit_socks_http.ui
-        ui/edit/edit_shadowsocks.h
-        ui/edit/edit_shadowsocks.cpp
-        ui/edit/edit_shadowsocks.ui
-        ui/edit/edit_vmess.h
-        ui/edit/edit_vmess.cpp
-        ui/edit/edit_vmess.ui
-        ui/edit/edit_trojan_vless.h
-        ui/edit/edit_trojan_vless.cpp
-        ui/edit/edit_trojan_vless.ui
+        src/ui/edit/edit_chain.h
+        src/ui/edit/edit_chain.cpp
+        src/ui/edit/edit_chain.ui
+        src/ui/edit/edit_socks_http.h
+        src/ui/edit/edit_socks_http.cpp
+        src/ui/edit/edit_socks_http.ui
+        src/ui/edit/edit_shadowsocks.h
+        src/ui/edit/edit_shadowsocks.cpp
+        src/ui/edit/edit_shadowsocks.ui
+        src/ui/edit/edit_vmess.h
+        src/ui/edit/edit_vmess.cpp
+        src/ui/edit/edit_vmess.ui
+        src/ui/edit/edit_trojan_vless.h
+        src/ui/edit/edit_trojan_vless.cpp
+        src/ui/edit/edit_trojan_vless.ui
 
-        ui/edit/edit_naive.h
-        ui/edit/edit_naive.cpp
-        ui/edit/edit_naive.ui
+        src/ui/edit/edit_naive.h
+        src/ui/edit/edit_naive.cpp
+        src/ui/edit/edit_naive.ui
 
-        ui/edit/edit_quic.h
-        ui/edit/edit_quic.cpp
-        ui/edit/edit_quic.ui
+        src/ui/edit/edit_quic.h
+        src/ui/edit/edit_quic.cpp
+        src/ui/edit/edit_quic.ui
 
-        ui/edit/edit_custom.h
-        ui/edit/edit_custom.cpp
-        ui/edit/edit_custom.ui
+        src/ui/edit/edit_custom.h
+        src/ui/edit/edit_custom.cpp
+        src/ui/edit/edit_custom.ui
 
-        ui/dialog_basic_settings.cpp
-        ui/dialog_basic_settings.h
-        ui/dialog_basic_settings.ui
+        src/ui/dialog_basic_settings.cpp
+        src/ui/dialog_basic_settings.h
+        src/ui/dialog_basic_settings.ui
 
-        ui/dialog_manage_groups.cpp
-        ui/dialog_manage_groups.h
-        ui/dialog_manage_groups.ui
+        src/ui/dialog_manage_groups.cpp
+        src/ui/dialog_manage_groups.h
+        src/ui/dialog_manage_groups.ui
 
-        ui/dialog_manage_routes.cpp
-        ui/dialog_manage_routes.h
-        ui/dialog_manage_routes.ui
+        src/ui/dialog_manage_routes.cpp
+        src/ui/dialog_manage_routes.h
+        src/ui/dialog_manage_routes.ui
 
-        ui/dialog_vpn_settings.cpp
-        ui/dialog_vpn_settings.h
-        ui/dialog_vpn_settings.ui
+        src/ui/dialog_vpn_settings.cpp
+        src/ui/dialog_vpn_settings.h
+        src/ui/dialog_vpn_settings.ui
 
-        ui/dialog_hotkey.cpp
-        ui/dialog_hotkey.h
-        ui/dialog_hotkey.ui
+        src/ui/dialog_hotkey.cpp
+        src/ui/dialog_hotkey.h
+        src/ui/dialog_hotkey.ui
 
-        ui/widget/ProxyItem.cpp
-        ui/widget/ProxyItem.h
-        ui/widget/ProxyItem.ui
-        ui/widget/GroupItem.cpp
-        ui/widget/GroupItem.h
-        ui/widget/GroupItem.ui
+        src/ui/widget/ProxyItem.cpp
+        src/ui/widget/ProxyItem.h
+        src/ui/widget/ProxyItem.ui
+        src/ui/widget/GroupItem.cpp
+        src/ui/widget/GroupItem.h
+        src/ui/widget/GroupItem.ui
 
         res/neko.qrc
         res/theme/feiyangqingyun/qss.qrc
@@ -268,6 +269,8 @@ set_property(TARGET nekobox PROPERTY AUTORCC ON)
 set_target_properties(nekobox PROPERTIES
         WIN32_EXECUTABLE TRUE
 )
+
+target_include_directories(nekobox PRIVATE src)
 
 # Target Source Translations
 
